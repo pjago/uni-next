@@ -1,0 +1,5 @@
+{:require [uni-next.core]
+ :init-fns [uni-next.core/-main]
+ :boot-reload {:on-jsload uni-next.core/-main}
+ :compiler-options {:asset-path "public/main.out"
+                    :parallel-build true}}

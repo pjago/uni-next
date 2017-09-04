@@ -1,0 +1,11 @@
+{:time         0
+ :rotation/pwm {:m8025s/shaft {:num [0.4306 0.9534] :den [1 -0.8539 -0.02473] :delay 1}}
+ :step         {:m8025s/shaft 6}
+ :pwm          {:m8025s/shaft 1}
+ :rotation     {:m8025s/shaft 0}
+ :position     {:m8025s [0 0 0]}
+ :rpm          {:m8025s/ir {:time 0 :count 0 :value 0}}
+ :reflection   {:m8025s/ir :m8025s/shaft}
+ :geometry     {:m8025s/shaft {:primitive "cylinder" :radius 0.15 :height 0.3}
+                :m8025s       {:primitive "box" :width 1.2 :height 0.3 :depth 1.2}
+                :blade        {:primitive "box" :width 0.5 :height 0.1 :depth 0.1}}}

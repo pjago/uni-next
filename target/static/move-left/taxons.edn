@@ -1,0 +1,7 @@
+{:app/component #{:rotation :position :velocity :geometry}
+ :app/type      #{:body :machines :wheels :targets}
+ :body          #{:differential :destination}
+ :machines      #{:differential :destination}
+ :targets       #{:destination}
+ :wheels        #{:left-wheel :right-wheel}
+ :differential  #{:left-wheel :right-wheel}}

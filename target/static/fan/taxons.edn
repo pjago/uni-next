@@ -1,0 +1,11 @@
+{:app/component #{:rotation :position :geometry :rpm :pwm :step :reflection :rotation/pwm :time}
+ :app/type      #{:body :fan :shaft :blade :ir}
+
+ :body          #{:m8025s}
+ :fan           #{:m8025s}
+ :shaft         #{:m8025s/shaft}
+ :ir            #{:m8025s/ir}
+ :blade         #{:b0 :b1 :b2 :b3 :b4 :b5 :b6}
+
+ :m8025s        #{:m8025s/shaft :m8025s/ir}
+ :m8025s/shaft  #{:b0 :b1 :b2}}

@@ -1,0 +1,16 @@
+{:stream   :off
+ :mouse    [0.0 0.0 1.0]
+ :select   :menu
+ :velocity {:differential {:x 1 :y 0 :z 0}}
+ :position {:destination  {:x 0 :y 0 :z 0.7}
+            :differential {:x 0 :y 0 :z 0}
+            :right-wheel  {:x 0 :y -0.5 :z 0.25}
+            :left-wheel   {:x 0 :y 0.5 :z 0.25}}
+ :rotation {:destination  {:pitch 0 :yaw 0 :roll 0}
+            :differential {:pitch 0 :yaw 0 :roll 0}
+            :right-wheel  {:pitch 0 :yaw 0 :roll 0}
+            :left-wheel   {:pitch 0 :yaw 0 :roll 0}}
+ :geometry {:destination  {:diameter 2 :width 0.5 :height 0.5 :depth 0.1}
+            :differential {:width 1 :height 1 :depth 0.32}
+            :right-wheel {:diameter 0.8 :width 0.2}
+            :left-wheel  {:diameter 0.8 :width 0.2}}}
