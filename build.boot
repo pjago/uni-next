@@ -39,9 +39,13 @@
 (deftask dev []
   (comp (watch)
         (repl :server true :port 9000)
-        (serve :port 3002 :dir "target")
+        (serve :port 3002 :dir "docs")
         (reload)
         (cljs-repl :nrepl-opts {:port 9001})
         (cljs :optimizations :none)
         (notify :audible true)
         (target)))
+
+(deftask build []
+  (comp (cljs :optimizations :none)
+        (target :dir #{"docs"})))

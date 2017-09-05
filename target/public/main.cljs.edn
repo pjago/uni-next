@@ -1,1 +1,0 @@
-{:require [figwheel.connect.main-2358d1d4 uni-next.core adzerk.boot-cljs-repl], :init-fns [uni-next.core/-main], :boot-reload {:on-jsload uni-next.core/-main}, :compiler-options {:asset-path "public/main.out", :parallel-build true}}
