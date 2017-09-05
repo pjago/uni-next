@@ -12,12 +12,11 @@ pom.xml.asc
 *lein-failures
 *nrepl-port
 *nrepl-history
-*log
+*.log
 src/build.boot
 .idea/
-*iml
+*.iml
 out/
-*~
 package.json
 package-lock.json
 project.clj
