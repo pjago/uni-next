@@ -8,8 +8,8 @@ if(cljs.core.vector_QMARK_.call(null,form)){
 throw (new Error("Queue literal expects a vector for its elements."));
 }
 
-return cljs.core._conj.call(null,cljs.core._conj.call(null,(function (){var x__9044__auto__ = form;
-return cljs.core._conj.call(null,cljs.core.List.EMPTY,x__9044__auto__);
+return cljs.core._conj.call(null,cljs.core._conj.call(null,(function (){var x__9047__auto__ = form;
+return cljs.core._conj.call(null,cljs.core.List.EMPTY,x__9047__auto__);
 })(),new cljs.core.Symbol(null,"cljs.core.PersistentQueue.EMPTY","cljs.core.PersistentQueue.EMPTY",399917828,null)),new cljs.core.Symbol("cljs.core","into","cljs.core/into",1879938733,null));
 });
 cljs.tagged_literals.read_uuid = (function cljs$tagged_literals$read_uuid(form){
@@ -19,7 +19,7 @@ throw (new Error("UUID literal expects a string as its representation."));
 }
 
 try{return cljs.core.uuid.call(null,form);
-}catch (e14288){var e = e14288;
+}catch (e14738){var e = e14738;
 throw (new Error(e.message));
 }});
 cljs.tagged_literals.read_inst = (function cljs$tagged_literals$read_inst(form){
@@ -29,7 +29,7 @@ throw (new Error("Instance literal expects a string for its timestamp."));
 }
 
 try{return cljs.reader.read_date.call(null,form);
-}catch (e14290){var e = e14290;
+}catch (e14740){var e = e14740;
 throw (new Error(e.message));
 }});
 cljs.tagged_literals.valid_js_literal_key_QMARK_ = (function cljs$tagged_literals$valid_js_literal_key_QMARK_(k){
@@ -51,8 +51,8 @@ cljs.tagged_literals.JSValue.cljs$lang$type = true;
 
 cljs.tagged_literals.JSValue.cljs$lang$ctorStr = "cljs.tagged-literals/JSValue";
 
-cljs.tagged_literals.JSValue.cljs$lang$ctorPrWriter = (function (this__8767__auto__,writer__8768__auto__,opt__8769__auto__){
-return cljs.core._write.call(null,writer__8768__auto__,"cljs.tagged-literals/JSValue");
+cljs.tagged_literals.JSValue.cljs$lang$ctorPrWriter = (function (this__8770__auto__,writer__8771__auto__,opt__8772__auto__){
+return cljs.core._write.call(null,writer__8771__auto__,"cljs.tagged-literals/JSValue");
 });
 
 cljs.tagged_literals.__GT_JSValue = (function cljs$tagged_literals$__GT_JSValue(val){

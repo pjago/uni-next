@@ -11,9 +11,9 @@
               [uni-next.parser :as p]
               [uni-next.ui :as ui]))
 
-;
+;todo: break spin into action and constraint, apply constraint at the end
 ;ACTIONS
-;
+;todo: think about passing transducers, just like core.async
 ;todo: simplify somehow the need to map & get k
 (defn transfer
   [this {:keys [t Yt Ut Gz]}]
@@ -28,9 +28,9 @@
     (into this (map (juxt key diff)) Gz)))
 
 (defn spin
-  [this {:keys [unit inf sup]
-         :or   {inf -180 sup 180}}]
-  (a/cycle (+ this unit) inf sup))
+  [this {:keys [unit scale inf sup]
+         :or   {scale 0.1 inf -180 sup 180}}]
+  (a/cycle (+ this (* unit scale)) inf sup))
 
 (defn move
   [this {:keys [rate dt]
@@ -45,7 +45,7 @@
                 (pos? n)
                 (assoc it :count 0 :time now :value (/ (* 3600 n) (- now then) resolution))
                 (>= (- now then) 120)
-                (assoc it :count 0 :time now :value 0)
+                (assoc it :count -1 :time now :value 0)
                 :else it)))]
     (merge-with counter this clear)))
 
@@ -95,21 +95,21 @@
 ;todo: find a way to give priority to transactions bellow the tree
 (om/defui ShaftPot
   static om/IQuery
-  (query [_] [:step])
+  (query [_] [:true-rpm])
   Object
   (render [this]
-    (let [{:keys [step] :as props} (om/props this)
+    (let [{:keys [:true-rpm] :as props} (om/props this)
           {:keys [uid type]} (meta props)]
       (dom/div #js{:style #js{:margin "8px"}}
-        (dom/h3 #js{:style #js{:marginLeft "5px"}} (str "< " (.toFixed step 4) "°"))
-        (dom/button #js{:onClick #(! this [`(app/add {:path [:step ~uid] :value  10})])} "+")
-        (dom/button #js{:onClick #(! this [`(app/add {:path [:step ~uid] :value -10})])} "-")))))
+        (dom/h3 #js{:style #js{:marginLeft "5px"}} (str (.toFixed true-rpm 2) " rpm"))
+        (dom/button #js{:onClick #(! this [`(app/add {:path [:true-rpm ~uid] :value  100})])} "+")
+        (dom/button #js{:onClick #(! this [`(app/add {:path [:true-rpm ~uid] :value -100})])} "-")))))
 
 (def shaft-pot (om/factory ShaftPot))
 
 (om/defui IrLcd
   static om/IQuery
-  (query [_] ['(:rpm {:keys [:value]})])
+  (query [_] ['(:rpm {:keys [:value]}) :reflection])
   Object
   (render [this]
     (let [{:keys [rpm reflection] :as props} (om/props this)
@@ -128,11 +128,11 @@
   (render [this]
     (let [{:keys [body shaft ir]} (om/props this)]
       (! this '[(app/increment {:path [:time]}) ;todo: frame independency, user priority
-                {(physics) {:rotation [(spin {:unit :step})]}}
-                {(control) {:step [(transfer {:Yt (:step {:as-of 5})
-                                              :Ut (:pwm {:as-of 5})
-                                              :Gz :rotation/pwm
-                                              :t  :time})]}}
+                {(physics) {:rotation [(spin {:unit :true-rpm})]}}
+                {(control) {:true-rpm [(transfer {:Yt (:true-rpm {:as-of 5})
+												  :Ut (:pwm {:as-of 5})
+												  :Gz :true-rpm/pwm
+												  :t  :time})]}}
                 {(interrupts) {:rpm [(rpm-timer {:clear :reflection :now :time})]}}])
       (dom/div #js{:style background}
         (apply dom/div #js{:style #js{:zIndex 1 :position "absolute"}}
@@ -142,12 +142,11 @@
         (web/a-scene {:id "scene" :embedded true}
           (apply web/a-entity {:rotation [0 60 0]} (map ui/body body))
           (web/a-entity {:id            "camera"
-                         :position      [0 0 -5]
-                         :near          0.75
-                         :rotation      [180 0 180]
+                         :position      [0 0 5]
                          :camera        {:active true :zoom 2}
-                         :wasd-controls {:adInverted true :wsInverted true}
+                         :wasd-controls {:enabled true}
                          :look-controls {:enabled true}}))))))
 
 #?(:cljs (defn -main [& args] (om/add-root! rec App (js/document.getElementById "app")))
    :clj  (om/add-root! rec App "app"))
+

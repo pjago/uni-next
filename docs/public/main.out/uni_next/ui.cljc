@@ -7,7 +7,7 @@
             [om.dom :as dom]
             [uni-next.parser :as p]))
 
-;
+;todo: perform optimizations at web/a-entity level
 ;UI
 ;
 (declare body)
@@ -40,17 +40,18 @@
 
 (om/defui Ir
   static om/IQuery
-  (query [_] [:reflection])
+  (query [_] [:position/scale :reflection])
   Object
   (componentDidMount [this]
     (.addEventListener (dom/node this) "raycaster-intersection-cleared"
       #(om/transact! this [`(app/increment ~{:path [:rpm (-> this om/props meta :uid) :count]})])))
   (render [this]
-    (let [{selector :reflection} (om/props this)]
-      (web/a-entity {:line      {:color "red"}
+    (let [{selector :reflection relative :position/scale} (om/props this)]
+      (web/a-entity {:position  relative
+                     :line      {:color "red"}
                      :raycaster {:far       1
                                  :interval  15
-                                 :direction [0 1 0]
+                                 :direction [0 0 1]
                                  :objects   (str ".\\" (str/replace (str selector) "/" "\\/"))
                                  :showLine  true}}))))
 
@@ -62,14 +63,13 @@
   Object
   (render [this]
     (let [{:keys [shaft ir position geometry] :as props} (om/props this)
-          {d :depth h :height} geometry]
-      (apply web/a-entity {:position position
-                           :rotation [90 0 0]
-                           :geometry geometry
-                           :material {:opacity 0.3}}
-        (apply web/a-entity {:position [0 (/ h 2) (/ d 3)]
-                             :scale    [1 (- h) 1]} (map body ir))
-        (map body shaft)))))
+          {d :depth h :height w :width} geometry]
+      (web/a-entity {:position position
+    				 :rotation [0 0 0]
+				     :geometry geometry
+				     :material {:opacity 0.3 :color "grey"}}
+        (apply web/a-entity {:scale [w h d]} (map body ir))
+        (apply web/a-entity {:rotation [90 0 0]} (map body shaft))))))
 
 (def fan (om/factory Fan))
 

@@ -41,4 +41,4 @@ goog.addDependency("../om/next.js", ['om.next'], ['om.next.cache', 'clojure.zip'
 goog.addDependency("../common/web.js", ['common.web'], ['cljs.core', 'om.dom', 'cljsjs.react', 'clojure.string', 'om.util']);
 goog.addDependency("../uni_next/ui.js", ['uni_next.ui'], ['cljs.core', 'om.dom', 'uni_next.parser', 'common.math', 'om.next', 'common.web', 'clojure.string']);
 goog.addDependency("../uni_next/core.js", ['uni_next.core'], ['cljs.core', 'om.dom', 'uni_next.parser', 'common.math', 'om.next', 'common.web', 'uni_next.ui']);
-goog.addDependency("../boot/cljs/main1148.js", ['boot.cljs.main1148'], ['uni_next.core', 'cljs.core']);
+goog.addDependency("../boot/cljs/main789.js", ['boot.cljs.main789'], ['uni_next.core', 'cljs.core']);
