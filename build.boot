@@ -39,7 +39,7 @@
 (deftask dev []
   (comp (watch)
         (repl :server true :port 9000)
-        (serve :port 3002 :dir "docs")
+        (serve :port 3000 :dir "target")
         (reload)
         (cljs-repl :nrepl-opts {:port 9001})
         (cljs :optimizations :none)
@@ -48,4 +48,5 @@
 
 (deftask build []
   (comp (cljs :optimizations :none)
+        (sift :move {#"uni-next.html" "index.html"})
         (target :dir #{"docs"})))

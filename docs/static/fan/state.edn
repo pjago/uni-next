@@ -1,12 +1,12 @@
 {:time           0
  :true-rpm/pwm   {:m8025s/shaft {:num [0.4306 0.9534] :den [1 -0.8539 -0.02473] :delay 1}}
- :true-rpm       {:m8025s/shaft 60}
- :pwm          	 {:m8025s/shaft 10}
- :rotation     	 {:m8025s/shaft 0}
- :position     	 {:m8025s [0 0 0]}
+ :true-rpm       {:m8025s/shaft 0}
+ :pwm            {:m8025s/shaft 10}
+ :rotation       {:m8025s/shaft 0}
+ :position       {:m8025s [0 0 0]}
  :position/scale {:m8025s/ir [0 -0.35 -0.5]}
- :rpm          	 {:m8025s/ir {:time 0 :count -1 :value 0}}
- :reflection   	 {:m8025s/ir :m8025s/shaft}
- :geometry     	 {:m8025s/shaft {:primitive "cylinder" :radius 0.15 :height 0.3}
-				  :m8025s       {:primitive "box" :width 1.2 :height 1.2 :depth 0.3}
-				  :blade        {:primitive "box" :width 0.5 :height 0.1 :depth 0.1}}}
+ :rpm            {:m8025s/ir {:time 0 :count -1 :value 0}}
+ :reflection     {:m8025s/ir :m8025s/shaft}
+ :geometry       {:m8025s/shaft {:primitive "cylinder" :radius 0.15 :height 0.3}
+                  :m8025s       {:primitive "box" :width 1.2 :height 1.2 :depth 0.3}
+                  :blade        {:primitive "box" :width 0.5 :height 0.1 :depth 0.1}}}

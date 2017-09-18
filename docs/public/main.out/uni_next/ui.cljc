@@ -65,9 +65,9 @@
     (let [{:keys [shaft ir position geometry] :as props} (om/props this)
           {d :depth h :height w :width} geometry]
       (web/a-entity {:position position
-    				 :rotation [0 0 0]
-				     :geometry geometry
-				     :material {:opacity 0.3 :color "grey"}}
+                     :rotation [0 0 0]
+                     :geometry geometry
+                     :material {:opacity 0.3 :color "grey"}}
         (apply web/a-entity {:scale [w h d]} (map body ir))
         (apply web/a-entity {:rotation [90 0 0]} (map body shaft))))))
 

@@ -20,6 +20,7 @@
        (derive IndexedSeq Sequential)
        (def APersistentVector ::vector)
        (derive APersistentVector ::any)
+       (derive Subvec APersistentVector)
        (derive PersistentVector APersistentVector)
        (def IPersistentMap ::map)
        (derive IPersistentMap ::any)

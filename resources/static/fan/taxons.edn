@@ -1,4 +1,4 @@
-{:app/component #{:time :rotation :position :geometry :reflection :true-rpm :rpm :pwm :position/scale :true-rpm/pwm}
+{:app/component #{:rotation :position :geometry :reflection :true-rpm :rpm :pwm :position/scale :true-rpm/pwm}
  :app/type      #{:body :fan :shaft :blade :ir}
 
  :body          #{:m8025s}

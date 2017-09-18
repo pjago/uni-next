@@ -2,19 +2,19 @@
 goog.provide('om.util');
 goog.require('cljs.core');
 om.util.force_children = (function om$util$force_children(x){
-var G__10658 = x;
+var G__10588 = x;
 if(cljs.core.seq_QMARK_.call(null,x)){
-return cljs.core.into.call(null,cljs.core.PersistentVector.EMPTY,cljs.core.map.call(null,om.util.force_children),G__10658);
+return cljs.core.into.call(null,cljs.core.PersistentVector.EMPTY,cljs.core.map.call(null,om.util.force_children),G__10588);
 } else {
-return G__10658;
+return G__10588;
 }
 });
 om.util.union_QMARK_ = (function om$util$union_QMARK_(expr){
-var expr__$1 = (function (){var G__10660 = expr;
+var expr__$1 = (function (){var G__10590 = expr;
 if(cljs.core.seq_QMARK_.call(null,expr)){
-return cljs.core.first.call(null,G__10660);
+return cljs.core.first.call(null,G__10590);
 } else {
-return G__10660;
+return G__10590;
 }
 })();
 return (cljs.core.map_QMARK_.call(null,expr__$1)) && (cljs.core.map_QMARK_.call(null,cljs.core.second.call(null,cljs.core.first.call(null,expr__$1))));
@@ -58,11 +58,11 @@ om.util.recursion_QMARK_ = (function om$util$recursion_QMARK_(x){
 return (cljs.core.symbol_identical_QMARK_.call(null,new cljs.core.Symbol(null,"...","...",-1926939749,null),x)) || (typeof x === 'number');
 });
 om.util.mutation_QMARK_ = (function om$util$mutation_QMARK_(expr){
-var expr__$1 = (function (){var G__10662 = expr;
+var expr__$1 = (function (){var G__10598 = expr;
 if(cljs.core.seq_QMARK_.call(null,expr)){
-return cljs.core.first.call(null,G__10662);
+return cljs.core.first.call(null,G__10598);
 } else {
-return G__10662;
+return G__10598;
 }
 })();
 return (expr__$1 instanceof cljs.core.Symbol);
